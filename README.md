@@ -10,3 +10,5 @@ commomly referred to as [firmware](#).
 
 In the following sections, _psi-spec_ describes principles and
 abstractions that apply agnostic of vendors and products.
+
+1. [Mask ROMs and Loaders](mask-roms-loaders.md)
