@@ -45,14 +45,20 @@ phase by phase, or stage by stage; projects differ in naming.
 | RISC-V            |   ZSBL   |       (-)        |  FSBL |        SBI         |     boot loader     |     OS     |
 | oreboot           | mask ROM |    boot block    |  bt0  |        main        |      LinuxBoot      |     OS     |
 
-Note: oreboot and coreboot do not implement boot loaders to access external
-storage. Instead, they provide options for payloads that could load a final OS
-or stand for themselves; it is up to the system design. A _boot block_ is only
+**Note**:
+[oreboot
+](https://github.com/oreboot/oreboot/tree/main/Documentation/boot-flow.md) and
+[coreboot](https://doc.coreboot.org/getting_started/architecture.html) do not
+implement boot loaders to access external storage themselves. Instead, they
+provide options for payloads that could load a final OS or stand for themselves;
+it is up to the vendor designing a system with it. A _boot block_ is only
 necessary for some specific platforms, and possibly _CAR_ (cache-as-RAM).
 RISC-V does not have a term for this, since it is conceptually not necessary.
-Generic naming or counting does not make much sense either, since different
-hardware platforms require some stages or not depending on their constraints.
-U-Boot, for example, starts counting backwards from its proper environment (the
-one offering a shell), to secondary and (rarely) tertiary program loader
-(SPL/TPL), while RISC-V starts counting forward, the mask ROM being the Zero
-Stage Boot Loader (ZSBL).
+Generic naming does not make much sense either, since different hardware
+platforms require some stages or not depending on their constraints. Nor does
+counting, due to different points of view: U-Boot, for example, starts counting
+[backwards from its proper environment (the one offering a shell)](
+https://u-boot.readthedocs.io/en/latest/develop/spl.html#u-boot-boot-phases), to
+secondary and (rarely) tertiary program loader (SPL/TPL), while
+[RISC-V starts counting forward, the mask ROM being the Zero Stage Boot Loader
+(ZSBL)](https://riscv.org/wp-content/uploads/2019/12/Summit_bootflow.pdf).
