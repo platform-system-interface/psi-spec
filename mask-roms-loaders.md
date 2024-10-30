@@ -18,16 +18,17 @@ perform MMIO access, transfer data into memory and execute it, set fuses, etc.
 ### Examples
 
 - Allwinner: FEL mode, usable with
-  - `sunxi-fel`
-  - `xfel`
-  - `fel-cli`
+  - [`sunxi-fel`](https://github.com/linux-sunxi/sunxi-tools)
+  - [`xfel`](https://github.com/xboot/xfel)
+  - [`fel-cli`](https://github.com/Razican/fel-cli)
   - other tools exist
 - Amlogic: (name unknown?), changed at least once over time (?)
-  - `pyamlboot`
-  - `aml_boot`
+  - [`pyamlboot`](https://github.com/superna9999/pyamlboot)
+  - [`aml_boot`](https://github.com/orangecms/aml_boot)
   - other tools exist
 - Rockchip: **TODO**
-  - `rkflashtool`
+  - [`rkflashtool`](https://github.com/linux-rockchip/rkflashtool)
+  - [`xrock`](https://github.com/xboot/xrock)
 
 ### Boot Loaders
 
