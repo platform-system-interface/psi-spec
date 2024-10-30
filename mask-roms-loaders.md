@@ -63,3 +63,13 @@ https://u-boot.readthedocs.io/en/latest/develop/spl.html#u-boot-boot-phases), to
 secondary and (rarely) tertiary program loader (SPL/TPL), while
 [RISC-V starts counting forward, the mask ROM being the Zero Stage Boot Loader
 (ZSBL)](https://riscv.org/wp-content/uploads/2019/12/Summit_bootflow.pdf).
+
+### References
+
+#### Arm platforms
+
+- [How Arm systems are booted](https://youtu.be/GXFw8SV-51g)
+- [U-Boot / Amlogic](https://youtu.be/u0-swEMDFp0)
+- Arm secure boot chain on Ampere Altra
+  * [Armed to boot talk](https://youtu.be/i2IG6Au34xM)
+  * [Armed to boot blog post](https://blog.cloudflare.com/armed-to-boot/)
