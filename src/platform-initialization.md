@@ -47,7 +47,7 @@ secondary and (rarely) tertiary program loader (SPL/TPL), while
 (ZSBL)](https://riscv.org/wp-content/uploads/2019/12/Summit_bootflow.pdf).
 
 **Note**:
-Vendors may define additional constraints in addition to their hardware
+Vendors may define artificial constraints in addition to their hardware
 limitiations. For example, AMD implements DRAM initialization in signed code
 that runs on a coprocessor before the main x86 cores come out of reset.
 Because the signatures of the binaries involved are verified, they cannot be
