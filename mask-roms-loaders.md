@@ -30,7 +30,7 @@ perform MMIO access, transfer data into memory and execute it, set fuses, etc.
   - [`rkflashtool`](https://github.com/linux-rockchip/rkflashtool)
   - [`xrock`](https://github.com/xboot/xrock)
 
-### Boot Loaders
+### Boot Flows
 
 Since memory and storage parts can be complex, additional firmware and loaders
 are implemented in software. They would initialize the platform step by step,
