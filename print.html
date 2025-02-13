@@ -192,8 +192,9 @@ typically remain mostly the same over time for the same vendor, because change
 would mean cost.
 This initial code is designed to load the changeable application code from
 rewritable storages, such as SPI flash parts, SD cards, or eMMC, or possibly an
-internal reprogrammable memory part.</p>
-<p>Those loaders may fall back to a mechanism allowing for talking to the SoC
+internal reprogrammable memory part. Those stages are also referred to as
+<a href="platform-initialization.html">platform initialization</a>.</p>
+<p>Mask ROM loaders may fall back to a mechanism allowing for talking to the SoC
 directly, e.g. via USB or UART. Because each vendor has their own implementation
 of such a mechanism, they also have their own software utilities that understand
 the respective protocol. With that software, one may read out chip information,
@@ -258,6 +259,17 @@ perform MMIO access, transfer data into memory and execute it, set fuses, etc.</
 </ul>
 </li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="platform-initialization"><a class="header" href="#platform-initialization">Platform Initialization</a></h2>
+<p>Booting a rich, virtual memory operating system poses challenges. While modern
+machines may offer gigabytes or even terabytes of <em>dynamic random access memory</em>
+<a href="https://en.wikipedia.org/wiki/Dynamic_random-access_memory">DRAM</a> and extremely
+high speed peripheral buses in the range of gigahertz frequencies, they still
+start small with low amounts of static RAM and peripheral controllers in an
+uninitialized state.</p>
+<p>Early platform firmware takes the responsibility to bring up DRAM and other
+controllers as needed to load and boot an operating system. Due to the high
+diversity of hardware, every SoC, SoM and mainboard comes with specific
+necessities.</p>
 <h3 id="boot-flows"><a class="header" href="#boot-flows">Boot Flows</a></h3>
 <p>Since memory and storage parts can be complex, additional firmware and loaders
 are implemented in software. They would initialize the platform step by step,
@@ -310,17 +322,7 @@ design. I.e., it is <a href="platform-security.html">protected against modificat
 </li>
 </ul>
 <h4 id="risc-v-platforms"><a class="header" href="#risc-v-platforms">RISC-V platforms</a></h4>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="platform-initialization"><a class="header" href="#platform-initialization">Platform Initialization</a></h2>
-<p>Booting a rich, virtual memory operating system poses challenges. While modern
-machines may offer gigabytes or even terabytes of <em>dynamic random access memory</em>
-<a href="https://en.wikipedia.org/wiki/Dynamic_random-access_memory">DRAM</a> and extremely
-high speed peripheral buses in the range of gigahertz frequencies, they still
-start small with low amounts of static RAM and peripheral controllers in an
-uninitialized state.</p>
-<p>Early platform firmware takes the responsibility to bring up DRAM and other
-controllers as needed to load and boot an operating system. Due to the high
-diversity of hardware, every SoC, SoM and mainboard comes with specific
-necessities.</p>
+<p><strong>TODO</strong></p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="platform-security"><a class="header" href="#platform-security">Platform Security</a></h2>
 <p>In order to design a secure platform, each and every component in the boot
 process must be <em>measured</em> and/or <em>verified</em>. In addition, the platform in its
