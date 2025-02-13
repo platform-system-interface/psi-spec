@@ -64,6 +64,16 @@ secondary and (rarely) tertiary program loader (SPL/TPL), while
 [RISC-V starts counting forward, the mask ROM being the Zero Stage Boot Loader
 (ZSBL)](https://riscv.org/wp-content/uploads/2019/12/Summit_bootflow.pdf).
 
+**Note**:
+Vendors may define additional constraints in addition to their hardware
+limitiations. For example, AMD implements DRAM initialization in signed code
+that runs on a coprocessor before the main x86 cores come out of reset.
+Because the signatures of the binaries involved are verified, they cannot be
+customized by anyone but those who hold the signing keys, i.e., the vendor,
+unless ways to circumvent the verification are found. This is also true for many
+OEM products in general, where custom firmware is not part of the product
+design. I.e., it is [protected against modification](platform-security.md).
+
 ### References
 
 #### Arm platforms
