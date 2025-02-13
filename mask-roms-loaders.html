@@ -1,0 +1,316 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Mask ROMs and Loaders - Platform System Interface Specification</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="intro.html">PSI Spec Introduction</a></li><li class="chapter-item expanded affix "><a href="mask-roms-loaders.html" class="active">Mask ROMs and Loaders</a></li><li class="chapter-item expanded affix "><a href="platform-initialization.html">Platform Initialization</a></li><li class="chapter-item expanded affix "><a href="platform-security.html">Platform Security</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Platform System Interface Specification</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="mask-roms-and-loaders"><a class="header" href="#mask-roms-and-loaders">Mask ROMs and Loaders</a></h2>
+<p>Many SoCs have initial pieces of code baked into them to bootstrap the system.
+Some may call them boot ROMs, otherwise known as mask ROMs or Zero Stage Boot
+Loaders (ZSBL). They define a low-level access channel for development and would
+typically remain mostly the same over time for the same vendor, because change
+would mean cost.
+This initial code is designed to load the changeable application code from
+rewritable storages, such as SPI flash parts, SD cards, or eMMC, or possibly an
+internal reprogrammable memory part.</p>
+<p>Those loaders may fall back to a mechanism allowing for talking to the SoC
+directly, e.g. via USB or UART. Because each vendor has their own implementation
+of such a mechanism, they also have their own software utilities that understand
+the respective protocol. With that software, one may read out chip information,
+perform MMIO access, transfer data into memory and execute it, set fuses, etc.</p>
+<h3 id="examples"><a class="header" href="#examples">Examples</a></h3>
+<ul>
+<li>Allwinner: FEL mode, usable with
+<ul>
+<li><a href="https://github.com/linux-sunxi/sunxi-tools"><code>sunxi-fel</code></a></li>
+<li><a href="https://github.com/xboot/xfel"><code>xfel</code></a></li>
+<li><a href="https://github.com/Razican/fel-cli"><code>fel-cli</code></a></li>
+<li>other tools exist</li>
+</ul>
+</li>
+<li>Amlogic: (name unknown?), changed at least once over time (?)
+<ul>
+<li><a href="https://github.com/superna9999/pyamlboot"><code>pyamlboot</code></a></li>
+<li><a href="https://github.com/orangecms/aml_boot"><code>aml_boot</code></a></li>
+<li>other tools exist</li>
+</ul>
+</li>
+<li>Rockchip: <strong>TODO</strong>
+<ul>
+<li><a href="https://github.com/linux-rockchip/rkflashtool"><code>rkflashtool</code></a></li>
+<li><a href="https://github.com/xboot/xrock"><code>xrock</code></a></li>
+</ul>
+</li>
+</ul>
+<h3 id="boot-flows"><a class="header" href="#boot-flows">Boot Flows</a></h3>
+<p>Since memory and storage parts can be complex, additional firmware and loaders
+are implemented in software. They would initialize the platform step by step,
+phase by phase, or stage by stage; projects differ in naming.</p>
+<div class="table-wrapper"><table><thead><tr><th>Project/Vendor</th><th>mask ROM</th><th>................</th><th>.....</th><th>..................</th><th>...................</th><th>..........</th></tr></thead><tbody>
+<tr><td>U-Boot</td><td>(N/A)</td><td>TPL</td><td>SPL</td><td>platform-dependent</td><td>U-Boot proper</td><td>OS</td></tr>
+<tr><td>EDK2</td><td>(N/A)</td><td>SEC</td><td>PEI</td><td>DXE</td><td>BDS</td><td>payload/OS</td></tr>
+<tr><td>Oxide</td><td>(N/A)</td><td>phbl</td><td>X</td><td>(-)</td><td>(-)</td><td>OS</td></tr>
+<tr><td>coreboot</td><td>(N/A)</td><td>boot block / CAR</td><td>ROM</td><td>RAM stage</td><td>payload</td><td>OS</td></tr>
+<tr><td>sunxi (Allwinner)</td><td>FEL</td><td>(-)</td><td>boot0</td><td>maybe intermediate</td><td>maybe U-Boot proper</td><td>OS</td></tr>
+<tr><td>RISC-V</td><td>ZSBL</td><td>(-)</td><td>FSBL</td><td>SBI</td><td>boot loader</td><td>OS</td></tr>
+<tr><td>oreboot</td><td>mask ROM</td><td>boot block</td><td>bt0</td><td>main</td><td>LinuxBoot</td><td>OS</td></tr>
+</tbody></table>
+</div>
+<p><strong>Note</strong>:
+<a href="https://github.com/oreboot/oreboot/tree/main/Documentation/boot-flow.md">oreboot
+</a> and
+<a href="https://doc.coreboot.org/getting_started/architecture.html">coreboot</a> do not
+implement boot loaders to access external storage themselves. Instead, they
+provide options for payloads that could load a final OS or stand for themselves;
+it is up to the vendor designing a system with it. A <em>boot block</em> is only
+necessary for some specific platforms, and possibly <em>CAR</em> (cache-as-RAM).
+RISC-V does not have a term for this, since it is conceptually not necessary.
+Generic naming does not make much sense either, since different hardware
+platforms require some stages or not depending on their constraints. Nor does
+counting, due to different points of view: U-Boot, for example, starts counting
+<a href="https://u-boot.readthedocs.io/en/latest/develop/spl.html#u-boot-boot-phases">backwards from its proper environment (the one offering a shell)</a>, to
+secondary and (rarely) tertiary program loader (SPL/TPL), while
+<a href="https://riscv.org/wp-content/uploads/2019/12/Summit_bootflow.pdf">RISC-V starts counting forward, the mask ROM being the Zero Stage Boot Loader
+(ZSBL)</a>.</p>
+<p><strong>Note</strong>:
+Vendors may define additional constraints in addition to their hardware
+limitiations. For example, AMD implements DRAM initialization in signed code
+that runs on a coprocessor before the main x86 cores come out of reset.
+Because the signatures of the binaries involved are verified, they cannot be
+customized by anyone but those who hold the signing keys, i.e., the vendor,
+unless ways to circumvent the verification are found. This is also true for many
+OEM products in general, where custom firmware is not part of the product
+design. I.e., it is <a href="platform-security.html">protected against modification</a>.</p>
+<h3 id="references"><a class="header" href="#references">References</a></h3>
+<h4 id="arm-platforms"><a class="header" href="#arm-platforms">Arm platforms</a></h4>
+<ul>
+<li><a href="https://youtu.be/GXFw8SV-51g">How Arm systems are booted</a></li>
+<li><a href="https://youtu.be/u0-swEMDFp0">U-Boot / Amlogic</a></li>
+<li>Arm secure boot chain on Ampere Altra
+<ul>
+<li><a href="https://youtu.be/i2IG6Au34xM">Armed to boot talk</a></li>
+<li><a href="https://blog.cloudflare.com/armed-to-boot/">Armed to boot blog post</a></li>
+</ul>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="intro.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="platform-initialization.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="intro.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="platform-initialization.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
