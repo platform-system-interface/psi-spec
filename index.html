@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="intro.html" class="active">PSI Spec Introduction</a></li><li class="chapter-item expanded affix "><a href="mask-roms-loaders.html">Mask ROMs and Loaders</a></li><li class="chapter-item expanded affix "><a href="platform-initialization.html">Platform Initialization</a></li><li class="chapter-item expanded affix "><a href="platform-security.html">Platform Security</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="intro.html" class="active">PSI Spec Introduction</a></li><li class="chapter-item expanded affix "><a href="mask-roms-loaders.html">Mask ROMs and Loaders</a></li><li class="chapter-item expanded affix "><a href="platform-initialization.html">Platform Initialization</a></li><li class="chapter-item expanded affix "><a href="boot-environments.html">Boot Environments</a></li><li class="chapter-item expanded affix "><a href="platform-security.html">Platform Security</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -176,11 +176,11 @@
                         <h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
 <p><img src="images/logo.svg" alt="PSI logo" /></p>
 <p>The Platform System Interface Specification, or <em>psi-spec</em>, is
-a collection of documents for <a href="#">hardware and software co-design</a> from a general perspective. It describes how microprocessors
-set up an environment for an operating system or otherwise
-bare-metal applications, typically through intermediate,
-rewritable code that initializes clocks, DRAM and peripherals,
-commonly referred to as boot firmware or <a href="platform-initialization.html">platform initialization firmware</a>.</p>
+a collection of documents for <a href="#">hardware and software co-design</a> from a general perspective.
+It describes how microprocessors can provide an <a href="boot-environments.html">environment for booting</a> an operating system or otherwise bare-metal applications,
+typically starting from intermediate, rewritable code that initializes clocks,
+DRAM and peripherals, commonly referred to as boot firmware or <a href="platform-initialization.html">platform
+initialization firmware</a>.</p>
 <p>In the following sections, <em>psi-spec</em> describes principles and
 abstractions that apply agnostic of vendors and products.</p>
 

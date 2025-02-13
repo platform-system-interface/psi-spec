@@ -3,8 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Page not found - Platform System Interface Specification</title>
-        <base href="/">
+        <title>Boot Environments - Platform System Interface Specification</title>
 
 
         <!-- Custom HTML head -->
@@ -89,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="intro.html">PSI Spec Introduction</a></li><li class="chapter-item expanded affix "><a href="mask-roms-loaders.html">Mask ROMs and Loaders</a></li><li class="chapter-item expanded affix "><a href="platform-initialization.html">Platform Initialization</a></li><li class="chapter-item expanded affix "><a href="boot-environments.html">Boot Environments</a></li><li class="chapter-item expanded affix "><a href="platform-security.html">Platform Security</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="intro.html">PSI Spec Introduction</a></li><li class="chapter-item expanded affix "><a href="mask-roms-loaders.html">Mask ROMs and Loaders</a></li><li class="chapter-item expanded affix "><a href="platform-initialization.html">Platform Initialization</a></li><li class="chapter-item expanded affix "><a href="boot-environments.html" class="active">Boot Environments</a></li><li class="chapter-item expanded affix "><a href="platform-security.html">Platform Security</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -174,14 +173,39 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="document-not-found-404"><a class="header" href="#document-not-found-404">Document not found (404)</a></h1>
-<p>This URL is invalid, sorry. Please use the navigation bar or search to continue.</p>
+                        <h2 id="boot-environments"><a class="header" href="#boot-environments">Boot Environments</a></h2>
+<p>A <em>boot environment</em> is the hosting system of a <em>boot loader</em>.</p>
+<p>Boot processes may be interactive, or automatic, or static, set up in many ways.</p>
+<p>The following table classifies various approaches with example implementations.</p>
+<div class="table-wrapper"><table><thead><tr><th></th><th>serial</th><th>network</th><th>graphics</th></tr></thead><tbody>
+<tr><td>Automatic</td><td>xmodem</td><td>TFTP, HTTP, PXE</td><td>splash screen</td></tr>
+<tr><td>Interactive</td><td>shell, ReGIS</td><td><code>cpu</code>, web</td><td>framebuffer, text menu</td></tr>
+</tbody></table>
+</div>
+<p>A boot environment may be configurable. Configuration may be changed at runtime,
+out of band, or at build time depending on the use case.</p>
+<p>The following is a list of examples.</p>
+<ul>
+<li><a href="https://docs.u-boot.org/en/latest/develop/distro.html">U-Boot configuration</a></li>
+<li><a href="https://uefi.org/specs/UEFI/2.10/03_Boot_Manager.html">UEFI NVRAM</a></li>
+<li><a href="https://www.seabios.org/Runtime_config">SeaBIOS (e.g., coreboot NVRAM)</a></li>
+<li><a href="https://uapi-group.org/specifications/specs/configuration_files_specification/">Boot Loader Specification</a></li>
+<li><a href="https://www.gnu.org/software/grub/manual/grub/html_node/Configuration.html">GRUB configuration</a></li>
+<li><a href="https://wiki.syslinux.org/wiki/index.php?title=SYSLINUX">syslinux/extlinux configuration files</a></li>
+<li><a href="https://ipxe.org/">PXE scripting/menu</a></li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="platform-initialization.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
+                            <a rel="next prefetch" href="platform-security.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -189,7 +213,13 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="platform-initialization.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
+                    <a rel="next prefetch" href="platform-security.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
 
         </div>
