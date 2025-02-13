@@ -198,7 +198,23 @@ directly, e.g. via USB or UART. Because each vendor has their own implementation
 of such a mechanism, they also have their own software utilities that understand
 the respective protocol. With that software, one may read out chip information,
 perform MMIO access, transfer data into memory and execute it, set fuses, etc.</p>
-<h3 id="examples"><a class="header" href="#examples">Examples</a></h3>
+<h3 id="generic-protocols-variants-and-tools"><a class="header" href="#generic-protocols-variants-and-tools">Generic protocols, variants and tools</a></h3>
+<ul>
+<li><a href="https://www.usb.org/document-library/device-firmware-upgrade-11-new-version-31-aug-2004">USB Device Firmware Upgrade (DFU)</a>
+<ul>
+<li><a href="https://www.st.com/resource/en/application_note/an3156-usb-dfu-protocol-used-in-the-stm32-bootloader-stmicroelectronics.pdf">STM32</a></li>
+<li><a href="https://github.com/vitalyvb/usbd-dfu">usbd-dfu (written in Rust)</a></li>
+</ul>
+</li>
+<li><a href="https://android.googlesource.com/platform/system/core/+/master/fastboot/README.md">fastboot</a>
+<ul>
+<li><a href="https://source.android.com/docs/setup/test/running">flashing instructions for Android development</a></li>
+<li><a href="https://docs.u-boot.org/en/latest/android/fastboot-protocol.html">U-Boot documentation on fastboot</a></li>
+<li><a href="https://github.com/platform-system-interface/fastboot">fastboot host-side implementation in Rust</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="vendor-specific-protocols-and-tools"><a class="header" href="#vendor-specific-protocols-and-tools">Vendor specific protocols and tools</a></h3>
 <ul>
 <li>Allwinner: FEL mode, usable with
 <ul>
@@ -211,14 +227,34 @@ perform MMIO access, transfer data into memory and execute it, set fuses, etc.</
 <li>Amlogic: (name unknown?), changed at least once over time (?)
 <ul>
 <li><a href="https://github.com/superna9999/pyamlboot"><code>pyamlboot</code></a></li>
-<li><a href="https://github.com/orangecms/aml_boot"><code>aml_boot</code></a></li>
+<li><a href="https://github.com/platform-system-interface/aml_boot"><code>aml_boot</code></a></li>
 <li>other tools exist</li>
+</ul>
+</li>
+<li>Bouffalo Lab
+<ul>
+<li><a href="https://github.com/platform-system-interface/bl_boot"><code>bl_boot</code></a></li>
+</ul>
+</li>
+<li>Canaan Kendryte
+<ul>
+<li><a href="https://github.com/platform-system-interface/kendryte_boot"><code>kendryte_boot</code></a></li>
 </ul>
 </li>
 <li>Rockchip: <strong>TODO</strong>
 <ul>
 <li><a href="https://github.com/linux-rockchip/rkflashtool"><code>rkflashtool</code></a></li>
 <li><a href="https://github.com/xboot/xrock"><code>xrock</code></a></li>
+</ul>
+</li>
+<li>Sophgo
+<ul>
+<li><a href="https://github.com/platform-system-interface/sg_boot"><code>sg_boot</code></a></li>
+</ul>
+</li>
+<li>StarFive JingHong (JH)
+<ul>
+<li><a href="https://github.com/platform-system-interface/jh_boot"><code>jh_boot</code></a></li>
 </ul>
 </li>
 </ul>
@@ -273,6 +309,7 @@ design. I.e., it is <a href="platform-security.html">protected against modificat
 </ul>
 </li>
 </ul>
+<h4 id="risc-v-platforms"><a class="header" href="#risc-v-platforms">RISC-V platforms</a></h4>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="platform-initialization"><a class="header" href="#platform-initialization">Platform Initialization</a></h2>
 <p>Booting a rich, virtual memory operating system poses challenges. While modern
 machines may offer gigabytes or even terabytes of <em>dynamic random access memory</em>
