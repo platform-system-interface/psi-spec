@@ -6,4 +6,4 @@ src = "src"
 title = "Platform System Interface Specification"
 
 [output.html]
-git_repository_url = "https://github.com/platform-system-interface/psi-spec"
+git-repository-url = "https://github.com/platform-system-interface/psi-spec"
