@@ -1,4 +1,4 @@
-# Platform System Interface Speicifcation
+# Platform System Interface Specification
 
 ## Contributing
 
