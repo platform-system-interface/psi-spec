@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="intro.html">PSI Spec Introduction</a></li><li class="chapter-item expanded affix "><a href="mask-roms-loaders.html">Mask ROMs and Loaders</a></li><li class="chapter-item expanded affix "><a href="platform-initialization.html">Platform Initialization</a></li><li class="chapter-item expanded affix "><a href="boot-environments.html">Boot Environments</a></li><li class="chapter-item expanded affix "><a href="platform-security.html">Platform Security</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> PSI Spec Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="application-processors.html"><strong aria-hidden="true">1.1.</strong> Application Processors</a></li><li class="chapter-item expanded "><a href="peripherals.html"><strong aria-hidden="true">1.2.</strong> Peripherals</a></li></ol></li><li class="chapter-item expanded "><a href="mask-roms-loaders.html"><strong aria-hidden="true">2.</strong> Mask ROMs and Loaders</a></li><li class="chapter-item expanded "><a href="platform-initialization.html"><strong aria-hidden="true">3.</strong> Platform Initialization</a></li><li class="chapter-item expanded "><a href="boot-environments.html"><strong aria-hidden="true">4.</strong> Boot Environments</a></li><li class="chapter-item expanded "><a href="platform-security.html"><strong aria-hidden="true">5.</strong> Platform Security</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -181,12 +181,35 @@
 <p><img src="images/logo.svg" alt="PSI logo" /></p>
 <p>The Platform System Interface Specification, or <em>psi-spec</em>, is
 a collection of documents for <a href="intro.html#">hardware and software co-design</a> from a general perspective.
-It describes how microprocessors can provide an <a href="boot-environments.html">environment for booting</a> an operating system or otherwise bare-metal applications,
-typically starting from intermediate, rewritable code that initializes clocks,
-DRAM and peripherals, commonly referred to as boot firmware or <a href="platform-initialization.html">platform
-initialization firmware</a>.</p>
+It describes how <a href="./application-processors">microprocessors</a> provide an
+<a href="boot-environments.html">environment for booting</a> operating systems or otherwise
+bare-metal applications, typically starting from intermediate, rewritable code
+that initializes clocks, DRAM and peripherals, commonly referred to as boot
+firmware or <a href="platform-initialization.html">platform initialization firmware</a>.</p>
 <p>In the following sections, <em>psi-spec</em> describes principles and
 abstractions that apply agnostic of vendors and products.</p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="application-processors"><a class="header" href="#application-processors">Application Processors</a></h2>
+<p>An <em>Application Processor</em> (AP) is the main processing unit of a system,
+commonly designed as a <em>System on Chip</em> (SoC). APs are sometimes also considered
+microprocessors, as opposed to microcontrollers. Another regularly used term is
+<em>Central Processing Unit</em> (CPU). While design approaches and names have changed
+over the years, psi-spec is concerned with the kind of processors that feature a
+<em>Memory Management Unit</em> (MMU) and DRAM, allowing for many concurrent tasks and
+processing large amounts of data.</p>
+<h3 id="system-on-chip"><a class="header" href="#system-on-chip">System on Chip</a></h3>
+<p>An SoC integrates application processing units with <a href="./peripherals">peripherals</a>
+via internal system buses, all packaged into one chip. Common buses are defined
+by the <a href="https://developer.arm.com/Architectures/AMBA">AMBA</a> standards and the
+<a href="https://opencores.org/howto/wishbone">WISHBONE Interconnect Architecture</a>. Some
+vendors have their own designs, such as AMD's <a href="https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/other/56978.pdf">Infinity Fabric</a>.
+A bus is generally a set of physical interfaces and corresponding protocols.
+Parts of an SoC are called blocks.</p>
+<p><img src="images/simple-soc.png" alt="logical view of a simple SoC" /></p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="peripherals"><a class="header" href="#peripherals">Peripherals</a></h2>
+<p>Systems connect with external hardware components, also known as <em>peripherals</em>,
+using buses and controllers. A controller is a unit driving a bus, such as the
+high-speed USB and PCIe buses or the slower SPI and I2C. Hardware platforms may
+integrate controllers directly or chain them through adapters and expansions.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="mask-roms-and-loaders"><a class="header" href="#mask-roms-and-loaders">Mask ROMs and Loaders</a></h2>
 <p>Many SoCs have initial pieces of code baked into them to bootstrap the system.
 Some may call them boot ROMs, otherwise known as mask ROMs or Zero Stage Boot

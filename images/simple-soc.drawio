@@ -1,0 +1,60 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.0.4 Chrome/128.0.6613.186 Electron/32.2.5 Safari/537.36" version="26.0.4">
+  <diagram id="Y_t08EuvB3_94yiSf32u" name="Page-1">
+    <mxGraphModel dx="1144" dy="686" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="600" pageHeight="400" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="z8LfdM-xd5_OOajsD7mN-11" value="" style="rounded=0;whiteSpace=wrap;html=1;fontColor=#FFB366;" parent="1" vertex="1">
+          <mxGeometry x="40" y="150" width="260" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="z8LfdM-xd5_OOajsD7mN-1" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="290" y="266" as="sourcePoint" />
+            <mxPoint x="50" y="266" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="z8LfdM-xd5_OOajsD7mN-10" value="System Bus" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#FFB366;" parent="z8LfdM-xd5_OOajsD7mN-1" vertex="1" connectable="0">
+          <mxGeometry x="0.0314" y="3" relative="1" as="geometry">
+            <mxPoint y="-16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="z8LfdM-xd5_OOajsD7mN-2" value="AP" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="73" y="161" width="70" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="z8LfdM-xd5_OOajsD7mN-3" value="SRAM" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="187" y="161" width="70" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="z8LfdM-xd5_OOajsD7mN-4" value="ROM" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="86" y="311" width="70" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="z8LfdM-xd5_OOajsD7mN-5" value="UART" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="197" y="311" width="70" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="z8LfdM-xd5_OOajsD7mN-6" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;endWidth=4.11764705882353;endSize=2.6323529411764706;startWidth=4.11764705882353;startSize=2.6323529411764706;width=5.7560975609756095;" parent="1" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="224" y="260" as="sourcePoint" />
+            <mxPoint x="224" y="222" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="z8LfdM-xd5_OOajsD7mN-7" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;endWidth=4.11764705882353;endSize=2.6323529411764706;startWidth=4.11764705882353;startSize=2.6323529411764706;width=5.7560975609756095;" parent="1" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="233" y="310" as="sourcePoint" />
+            <mxPoint x="233" y="272" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="z8LfdM-xd5_OOajsD7mN-8" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;endWidth=4.11764705882353;endSize=2.6323529411764706;startWidth=4.11764705882353;startSize=2.6323529411764706;width=5.7560975609756095;" parent="1" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="121" y="310" as="sourcePoint" />
+            <mxPoint x="121" y="272" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="z8LfdM-xd5_OOajsD7mN-9" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;endWidth=4.11764705882353;endSize=2.6323529411764706;startWidth=4.11764705882353;startSize=2.6323529411764706;width=5.7560975609756095;" parent="1" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="110" y="260" as="sourcePoint" />
+            <mxPoint x="110" y="222" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

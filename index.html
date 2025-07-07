@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="intro.html" class="active">PSI Spec Introduction</a></li><li class="chapter-item expanded affix "><a href="mask-roms-loaders.html">Mask ROMs and Loaders</a></li><li class="chapter-item expanded affix "><a href="platform-initialization.html">Platform Initialization</a></li><li class="chapter-item expanded affix "><a href="boot-environments.html">Boot Environments</a></li><li class="chapter-item expanded affix "><a href="platform-security.html">Platform Security</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html" class="active"><strong aria-hidden="true">1.</strong> PSI Spec Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="application-processors.html"><strong aria-hidden="true">1.1.</strong> Application Processors</a></li><li class="chapter-item expanded "><a href="peripherals.html"><strong aria-hidden="true">1.2.</strong> Peripherals</a></li></ol></li><li class="chapter-item expanded "><a href="mask-roms-loaders.html"><strong aria-hidden="true">2.</strong> Mask ROMs and Loaders</a></li><li class="chapter-item expanded "><a href="platform-initialization.html"><strong aria-hidden="true">3.</strong> Platform Initialization</a></li><li class="chapter-item expanded "><a href="boot-environments.html"><strong aria-hidden="true">4.</strong> Boot Environments</a></li><li class="chapter-item expanded "><a href="platform-security.html"><strong aria-hidden="true">5.</strong> Platform Security</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -180,10 +180,11 @@
 <p><img src="images/logo.svg" alt="PSI logo" /></p>
 <p>The Platform System Interface Specification, or <em>psi-spec</em>, is
 a collection of documents for <a href="#">hardware and software co-design</a> from a general perspective.
-It describes how microprocessors can provide an <a href="boot-environments.html">environment for booting</a> an operating system or otherwise bare-metal applications,
-typically starting from intermediate, rewritable code that initializes clocks,
-DRAM and peripherals, commonly referred to as boot firmware or <a href="platform-initialization.html">platform
-initialization firmware</a>.</p>
+It describes how <a href="./application-processors">microprocessors</a> provide an
+<a href="boot-environments.html">environment for booting</a> operating systems or otherwise
+bare-metal applications, typically starting from intermediate, rewritable code
+that initializes clocks, DRAM and peripherals, commonly referred to as boot
+firmware or <a href="platform-initialization.html">platform initialization firmware</a>.</p>
 <p>In the following sections, <em>psi-spec</em> describes principles and
 abstractions that apply agnostic of vendors and products.</p>
 
@@ -192,7 +193,7 @@ abstractions that apply agnostic of vendors and products.</p>
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
 
-                            <a rel="next prefetch" href="mask-roms-loaders.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="application-processors.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -203,7 +204,7 @@ abstractions that apply agnostic of vendors and products.</p>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
 
-                    <a rel="next prefetch" href="mask-roms-loaders.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="application-processors.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

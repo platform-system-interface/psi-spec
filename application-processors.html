@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Platform Initialization - Platform System Interface Specification</title>
+        <title>Application Processors - Platform System Interface Specification</title>
 
 
         <!-- Custom HTML head -->
@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> PSI Spec Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="application-processors.html"><strong aria-hidden="true">1.1.</strong> Application Processors</a></li><li class="chapter-item expanded "><a href="peripherals.html"><strong aria-hidden="true">1.2.</strong> Peripherals</a></li></ol></li><li class="chapter-item expanded "><a href="mask-roms-loaders.html"><strong aria-hidden="true">2.</strong> Mask ROMs and Loaders</a></li><li class="chapter-item expanded "><a href="platform-initialization.html" class="active"><strong aria-hidden="true">3.</strong> Platform Initialization</a></li><li class="chapter-item expanded "><a href="boot-environments.html"><strong aria-hidden="true">4.</strong> Boot Environments</a></li><li class="chapter-item expanded "><a href="platform-security.html"><strong aria-hidden="true">5.</strong> Platform Security</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> PSI Spec Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="application-processors.html" class="active"><strong aria-hidden="true">1.1.</strong> Application Processors</a></li><li class="chapter-item expanded "><a href="peripherals.html"><strong aria-hidden="true">1.2.</strong> Peripherals</a></li></ol></li><li class="chapter-item expanded "><a href="mask-roms-loaders.html"><strong aria-hidden="true">2.</strong> Mask ROMs and Loaders</a></li><li class="chapter-item expanded "><a href="platform-initialization.html"><strong aria-hidden="true">3.</strong> Platform Initialization</a></li><li class="chapter-item expanded "><a href="boot-environments.html"><strong aria-hidden="true">4.</strong> Boot Environments</a></li><li class="chapter-item expanded "><a href="platform-security.html"><strong aria-hidden="true">5.</strong> Platform Security</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -176,80 +176,33 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h2 id="platform-initialization"><a class="header" href="#platform-initialization">Platform Initialization</a></h2>
-<p>Booting a rich, virtual memory operating system poses challenges. While modern
-machines may offer gigabytes or even terabytes of <em>dynamic random access memory</em>
-<a href="https://en.wikipedia.org/wiki/Dynamic_random-access_memory">DRAM</a> and extremely
-high speed peripheral buses in the range of gigahertz frequencies, they still
-start small with low amounts of static RAM and peripheral controllers in an
-uninitialized state.</p>
-<p>Early platform firmware takes the responsibility to bring up DRAM and other
-controllers as needed to load and boot an operating system. Due to the high
-diversity of hardware, every SoC, SoM and mainboard comes with specific
-necessities.</p>
-<h3 id="boot-flows"><a class="header" href="#boot-flows">Boot Flows</a></h3>
-<p>Since memory and storage parts can be complex, additional firmware and loaders
-are implemented in software. They would initialize the platform step by step,
-phase by phase, or stage by stage; projects differ in naming.</p>
-<div class="table-wrapper"><table><thead><tr><th>Project/Vendor</th><th>mask ROM</th><th>................</th><th>.....</th><th>..................</th><th>...................</th><th>..........</th></tr></thead><tbody>
-<tr><td>U-Boot</td><td>(N/A)</td><td>TPL</td><td>SPL</td><td>platform-dependent</td><td>U-Boot proper</td><td>OS</td></tr>
-<tr><td>EDK2</td><td>(N/A)</td><td>SEC</td><td>PEI</td><td>DXE</td><td>BDS</td><td>payload/OS</td></tr>
-<tr><td>Oxide</td><td>(N/A)</td><td>phbl</td><td>X</td><td>(-)</td><td>(-)</td><td>OS</td></tr>
-<tr><td>coreboot</td><td>(N/A)</td><td>boot block / CAR</td><td>ROM</td><td>RAM stage</td><td>payload</td><td>OS</td></tr>
-<tr><td>sunxi (Allwinner)</td><td>FEL</td><td>(-)</td><td>boot0</td><td>maybe intermediate</td><td>maybe U-Boot proper</td><td>OS</td></tr>
-<tr><td>RISC-V</td><td>ZSBL</td><td>(-)</td><td>FSBL</td><td>SBI</td><td>boot loader</td><td>OS</td></tr>
-<tr><td>oreboot</td><td>mask ROM</td><td>boot block</td><td>bt0</td><td>main</td><td>LinuxBoot</td><td>OS</td></tr>
-</tbody></table>
-</div>
-<p><strong>Note</strong>:
-<a href="https://github.com/oreboot/oreboot/tree/main/Documentation/boot-flow.md">oreboot
-</a> and
-<a href="https://doc.coreboot.org/getting_started/architecture.html">coreboot</a> do not
-implement boot loaders to access external storage themselves. Instead, they
-provide options for payloads that could load a final OS or stand for themselves;
-it is up to the vendor designing a system with it. A <em>boot block</em> is only
-necessary for some specific platforms, and possibly <em>CAR</em> (cache-as-RAM).
-RISC-V does not have a term for this, since it is conceptually not necessary.
-Generic naming does not make much sense either, since different hardware
-platforms require some stages or not depending on their constraints. Nor does
-counting, due to different points of view: U-Boot, for example, starts counting
-<a href="https://u-boot.readthedocs.io/en/latest/develop/spl.html#u-boot-boot-phases">backwards from its proper environment (the one offering a shell)</a>, to
-secondary and (rarely) tertiary program loader (SPL/TPL), while
-<a href="https://riscv.org/wp-content/uploads/2019/12/Summit_bootflow.pdf">RISC-V starts counting forward, the mask ROM being the Zero Stage Boot Loader
-(ZSBL)</a>.</p>
-<p><strong>Note</strong>:
-Vendors may define artificial constraints in addition to their hardware
-limitiations. For example, AMD implements DRAM initialization in signed code
-that runs on a coprocessor before the main x86 cores come out of reset.
-Because the signatures of the binaries involved are verified, they cannot be
-customized by anyone but those who hold the signing keys, i.e., the vendor,
-unless ways to circumvent the verification are found. This is also true for many
-OEM products in general, where custom firmware is not part of the product
-design. I.e., it is <a href="platform-security.html">protected against modification</a>.</p>
-<h3 id="references"><a class="header" href="#references">References</a></h3>
-<h4 id="arm-platforms"><a class="header" href="#arm-platforms">Arm platforms</a></h4>
-<ul>
-<li><a href="https://youtu.be/GXFw8SV-51g">How Arm systems are booted</a></li>
-<li><a href="https://youtu.be/u0-swEMDFp0">U-Boot / Amlogic</a></li>
-<li>Arm secure boot chain on Ampere Altra
-<ul>
-<li><a href="https://youtu.be/i2IG6Au34xM">Armed to boot talk</a></li>
-<li><a href="https://blog.cloudflare.com/armed-to-boot/">Armed to boot blog post</a></li>
-</ul>
-</li>
-</ul>
-<h4 id="risc-v-platforms"><a class="header" href="#risc-v-platforms">RISC-V platforms</a></h4>
-<p><strong>TODO</strong></p>
+                        <h2 id="application-processors"><a class="header" href="#application-processors">Application Processors</a></h2>
+<p>An <em>Application Processor</em> (AP) is the main processing unit of a system,
+commonly designed as a <em>System on Chip</em> (SoC). APs are sometimes also considered
+microprocessors, as opposed to microcontrollers. Another regularly used term is
+<em>Central Processing Unit</em> (CPU). While design approaches and names have changed
+over the years, psi-spec is concerned with the kind of processors that feature a
+<em>Memory Management Unit</em> (MMU) and DRAM, allowing for many concurrent tasks and
+processing large amounts of data.</p>
+<h3 id="system-on-chip"><a class="header" href="#system-on-chip">System on Chip</a></h3>
+<p>An SoC integrates application processing units with <a href="./peripherals">peripherals</a>
+via internal system buses, all packaged into one chip. Common buses are defined
+by the <a href="https://developer.arm.com/Architectures/AMBA">AMBA</a> standards and the
+<a href="https://opencores.org/howto/wishbone">WISHBONE Interconnect Architecture</a>. Some
+vendors have their own designs, such as AMD's <a href="https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/other/56978.pdf">Infinity Fabric</a>.
+A bus is generally a set of physical interfaces and corresponding protocols.
+Parts of an SoC are called blocks.</p>
+<p><img src="images/simple-soc.png" alt="logical view of a simple SoC" /></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="mask-roms-loaders.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="intro.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="boot-environments.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="peripherals.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -259,11 +212,11 @@ design. I.e., it is <a href="platform-security.html">protected against modificat
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="mask-roms-loaders.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="intro.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="boot-environments.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="peripherals.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
