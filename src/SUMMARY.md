@@ -5,3 +5,4 @@
 - [Platform Initialization](platform-initialization.md)
 - [Boot Environments](boot-environments.md)
 - [Platform Security](platform-security.md)
+    * [Secure Boot](secure-boot.md)
