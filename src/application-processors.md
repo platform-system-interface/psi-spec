@@ -10,13 +10,21 @@ processing large amounts of data.
 
 ### System on Chip
 
-An SoC integrates application processing units with [peripherals](./peripherals)
-via internal system buses, all packaged into one chip. Common buses are defined
-by the [AMBA](https://developer.arm.com/Architectures/AMBA) standards and the
-[WISHBONE Interconnect Architecture](https://opencores.org/howto/wishbone). Some
-vendors have their own designs, such as AMD's [Infinity Fabric](
+An SoC integrates processing units with IO [peripherals](peripherals.md) via
+internal system buses and networks, all packaged into one chip.
+
+Common buses are defined by the
+[AMBA](https://developer.arm.com/Architectures/AMBA) standards, the
+[WISHBONE Interconnect Architecture](https://opencores.org/howto/wishbone), and
+[CoreConnect](https://en.wikipedia.org/wiki/CoreConnect).
+Some vendors have their own designs, such as AMD's [Infinity Fabric](
 https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/other/56978.pdf).
 A bus is generally a set of physical interfaces and corresponding protocols.
+
+A [Network on a Chip (NoC)](https://en.wikipedia.org/wiki/Network_on_a_chip)
+improves the scalability of SoC components and its power efficiency over shared
+buses.
+
 Parts of an SoC are called blocks.
 
 ![logical view of a simple SoC](images/simple-soc.png)
