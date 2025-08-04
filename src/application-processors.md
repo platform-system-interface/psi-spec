@@ -28,3 +28,7 @@ buses.
 Parts of an SoC are called blocks.
 
 ![logical view of a simple SoC](images/simple-soc.png)
+
+### Multiprocessing
+
+AMP, SMP, .....
