@@ -176,7 +176,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h2 id="platform-initialization"><a class="header" href="#platform-initialization">Platform Initialization</a></h2>
+                        <h1 id="platform-initialization"><a class="header" href="#platform-initialization">Platform Initialization</a></h1>
 <p>Booting a rich, virtual memory operating system poses challenges. While modern
 machines may offer gigabytes or even terabytes of <em>dynamic random access memory</em>
 <a href="https://en.wikipedia.org/wiki/Dynamic_random-access_memory">DRAM</a> and extremely
@@ -187,7 +187,7 @@ uninitialized state.</p>
 controllers as needed to load and boot an operating system. Due to the high
 diversity of hardware, every SoC, SoM and mainboard comes with specific
 necessities.</p>
-<h3 id="boot-flows"><a class="header" href="#boot-flows">Boot Flows</a></h3>
+<h2 id="boot-flows"><a class="header" href="#boot-flows">Boot Flows</a></h2>
 <p>Since memory and storage parts can be complex, additional firmware and loaders
 are implemented in software. They would initialize the platform step by step,
 phase by phase, or stage by stage; projects differ in naming.</p>
@@ -202,8 +202,8 @@ phase by phase, or stage by stage; projects differ in naming.</p>
 </tbody></table>
 </div>
 <p><strong>Note</strong>:
-<a href="https://github.com/oreboot/oreboot/tree/main/Documentation/boot-flow.md">oreboot
-</a> and
+<a href="https://github.com/oreboot/oreboot/tree/main/Documentation/boot-flow.md">oreboot</a>
+and
 <a href="https://doc.coreboot.org/getting_started/architecture.html">coreboot</a> do not
 implement boot loaders to access external storage themselves. Instead, they
 provide options for payloads that could load a final OS or stand for themselves;
@@ -226,8 +226,8 @@ customized by anyone but those who hold the signing keys, i.e., the vendor,
 unless ways to circumvent the verification are found. This is also true for many
 OEM products in general, where custom firmware is not part of the product
 design. I.e., it is <a href="platform-security.html">protected against modification</a>.</p>
-<h3 id="references"><a class="header" href="#references">References</a></h3>
-<h4 id="arm-platforms"><a class="header" href="#arm-platforms">Arm platforms</a></h4>
+<h2 id="references"><a class="header" href="#references">References</a></h2>
+<h3 id="arm-platforms"><a class="header" href="#arm-platforms">Arm platforms</a></h3>
 <ul>
 <li><a href="https://youtu.be/GXFw8SV-51g">How Arm systems are booted</a></li>
 <li><a href="https://youtu.be/u0-swEMDFp0">U-Boot / Amlogic</a></li>
@@ -238,8 +238,8 @@ design. I.e., it is <a href="platform-security.html">protected against modificat
 </ul>
 </li>
 </ul>
-<h4 id="risc-v-platforms"><a class="header" href="#risc-v-platforms">RISC-V platforms</a></h4>
-<p><strong>TODO</strong></p>
+<h3 id="risc-v-platforms"><a class="header" href="#risc-v-platforms">RISC-V platforms</a></h3>
+<p>TODO</p>
 
                     </main>
 

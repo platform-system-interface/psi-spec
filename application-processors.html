@@ -176,7 +176,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h2 id="application-processors"><a class="header" href="#application-processors">Application Processors</a></h2>
+                        <h1 id="application-processors"><a class="header" href="#application-processors">Application Processors</a></h1>
 <p>An <em>Application Processor</em> (AP) is the main processing unit of a system,
 commonly designed as a <em>System on Chip</em> (SoC). APs are sometimes also considered
 microprocessors, as opposed to microcontrollers. Another regularly used term is
@@ -184,14 +184,19 @@ microprocessors, as opposed to microcontrollers. Another regularly used term is
 over the years, psi-spec is concerned with the kind of processors that feature a
 <em>Memory Management Unit</em> (MMU) and DRAM, allowing for many concurrent tasks and
 processing large amounts of data.</p>
-<h3 id="system-on-chip"><a class="header" href="#system-on-chip">System on Chip</a></h3>
-<p>An SoC integrates application processing units with <a href="./peripherals">peripherals</a>
-via internal system buses, all packaged into one chip. Common buses are defined
-by the <a href="https://developer.arm.com/Architectures/AMBA">AMBA</a> standards and the
-<a href="https://opencores.org/howto/wishbone">WISHBONE Interconnect Architecture</a>. Some
-vendors have their own designs, such as AMD's <a href="https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/other/56978.pdf">Infinity Fabric</a>.
-A bus is generally a set of physical interfaces and corresponding protocols.
-Parts of an SoC are called blocks.</p>
+<h2 id="system-on-chip"><a class="header" href="#system-on-chip">System on Chip</a></h2>
+<p>An SoC integrates processing units with IO <a href="peripherals.html">peripherals</a> via
+internal system buses and networks, all packaged into one chip.</p>
+<p>Common buses are defined by the
+<a href="https://developer.arm.com/Architectures/AMBA">AMBA</a> standards, the
+<a href="https://opencores.org/howto/wishbone">WISHBONE Interconnect Architecture</a>, and
+<a href="https://en.wikipedia.org/wiki/CoreConnect">CoreConnect</a>.
+Some vendors have their own designs, such as AMD's <a href="https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/other/56978.pdf">Infinity Fabric</a>.
+A bus is generally a set of physical interfaces and corresponding protocols.</p>
+<p>A <a href="https://en.wikipedia.org/wiki/Network_on_a_chip">Network on a Chip (NoC)</a>
+improves the scalability of SoC components and its power efficiency over shared
+buses.</p>
+<p>Parts of an SoC are called blocks.</p>
 <p><img src="images/simple-soc.png" alt="logical view of a simple SoC" /></p>
 
                     </main>

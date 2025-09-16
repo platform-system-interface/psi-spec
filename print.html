@@ -177,18 +177,19 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
+                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
 <p><img src="images/logo.svg" alt="PSI logo" /></p>
 <p>The Platform System Interface Specification, or <em>psi-spec</em>, is
-a collection of documents for <a href="intro.html#">hardware and software co-design</a> from a general perspective.
-It describes how <a href="./application-processors">microprocessors</a> provide an
+a collection of documents for [hardware and software co-design](</p>
+<h1 id="-from-a-general-perspective"><a class="header" href="#-from-a-general-perspective">) from a general perspective.</a></h1>
+<p>It describes how <a href="./application-processors">microprocessors</a> provide an
 <a href="boot-environments.html">environment for booting</a> operating systems or otherwise
 bare-metal applications, typically starting from intermediate, rewritable code
 that initializes clocks, DRAM and peripherals, commonly referred to as boot
 firmware or <a href="platform-initialization.html">platform initialization firmware</a>.</p>
 <p>In the following sections, <em>psi-spec</em> describes principles and
 abstractions that apply agnostic of vendors and products.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="application-processors"><a class="header" href="#application-processors">Application Processors</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="application-processors"><a class="header" href="#application-processors">Application Processors</a></h1>
 <p>An <em>Application Processor</em> (AP) is the main processing unit of a system,
 commonly designed as a <em>System on Chip</em> (SoC). APs are sometimes also considered
 microprocessors, as opposed to microcontrollers. Another regularly used term is
@@ -196,21 +197,26 @@ microprocessors, as opposed to microcontrollers. Another regularly used term is
 over the years, psi-spec is concerned with the kind of processors that feature a
 <em>Memory Management Unit</em> (MMU) and DRAM, allowing for many concurrent tasks and
 processing large amounts of data.</p>
-<h3 id="system-on-chip"><a class="header" href="#system-on-chip">System on Chip</a></h3>
-<p>An SoC integrates application processing units with <a href="./peripherals">peripherals</a>
-via internal system buses, all packaged into one chip. Common buses are defined
-by the <a href="https://developer.arm.com/Architectures/AMBA">AMBA</a> standards and the
-<a href="https://opencores.org/howto/wishbone">WISHBONE Interconnect Architecture</a>. Some
-vendors have their own designs, such as AMD's <a href="https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/other/56978.pdf">Infinity Fabric</a>.
-A bus is generally a set of physical interfaces and corresponding protocols.
-Parts of an SoC are called blocks.</p>
+<h2 id="system-on-chip"><a class="header" href="#system-on-chip">System on Chip</a></h2>
+<p>An SoC integrates processing units with IO <a href="peripherals.html">peripherals</a> via
+internal system buses and networks, all packaged into one chip.</p>
+<p>Common buses are defined by the
+<a href="https://developer.arm.com/Architectures/AMBA">AMBA</a> standards, the
+<a href="https://opencores.org/howto/wishbone">WISHBONE Interconnect Architecture</a>, and
+<a href="https://en.wikipedia.org/wiki/CoreConnect">CoreConnect</a>.
+Some vendors have their own designs, such as AMD's <a href="https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/other/56978.pdf">Infinity Fabric</a>.
+A bus is generally a set of physical interfaces and corresponding protocols.</p>
+<p>A <a href="https://en.wikipedia.org/wiki/Network_on_a_chip">Network on a Chip (NoC)</a>
+improves the scalability of SoC components and its power efficiency over shared
+buses.</p>
+<p>Parts of an SoC are called blocks.</p>
 <p><img src="images/simple-soc.png" alt="logical view of a simple SoC" /></p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="peripherals"><a class="header" href="#peripherals">Peripherals</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="peripherals"><a class="header" href="#peripherals">Peripherals</a></h1>
 <p>Systems connect with external hardware components, also known as <em>peripherals</em>,
 using buses and controllers. A controller is a unit driving a bus, such as the
 high-speed USB and PCIe buses or the slower SPI and I2C. Hardware platforms may
 integrate controllers directly or chain them through adapters and expansions.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="mask-roms-and-loaders"><a class="header" href="#mask-roms-and-loaders">Mask ROMs and Loaders</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="mask-roms-and-loaders"><a class="header" href="#mask-roms-and-loaders">Mask ROMs and Loaders</a></h1>
 <p>Many SoCs have initial pieces of code baked into them to bootstrap the system.
 Some may call them boot ROMs, otherwise known as mask ROMs or Zero Stage Boot
 Loaders (ZSBL). They define a low-level access channel for development and would
@@ -225,7 +231,7 @@ directly, e.g. via USB or UART. Because each vendor has their own implementation
 of such a mechanism, they also have their own software utilities that understand
 the respective protocol. With that software, one may read out chip information,
 perform MMIO access, transfer data into memory and execute it, set fuses, etc.</p>
-<h3 id="generic-protocols-variants-and-tools"><a class="header" href="#generic-protocols-variants-and-tools">Generic protocols, variants and tools</a></h3>
+<h2 id="generic-protocols-variants-and-tools"><a class="header" href="#generic-protocols-variants-and-tools">Generic protocols, variants and tools</a></h2>
 <ul>
 <li><a href="https://www.usb.org/document-library/device-firmware-upgrade-11-new-version-31-aug-2004">USB Device Firmware Upgrade (DFU)</a>
 <ul>
@@ -241,7 +247,7 @@ perform MMIO access, transfer data into memory and execute it, set fuses, etc.</
 </ul>
 </li>
 </ul>
-<h3 id="vendor-specific-protocols-and-tools"><a class="header" href="#vendor-specific-protocols-and-tools">Vendor specific protocols and tools</a></h3>
+<h2 id="vendor-specific-protocols-and-tools"><a class="header" href="#vendor-specific-protocols-and-tools">Vendor specific protocols and tools</a></h2>
 <ul>
 <li>Allwinner: FEL mode, usable with
 <ul>
@@ -285,7 +291,7 @@ perform MMIO access, transfer data into memory and execute it, set fuses, etc.</
 </ul>
 </li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="platform-initialization"><a class="header" href="#platform-initialization">Platform Initialization</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="platform-initialization"><a class="header" href="#platform-initialization">Platform Initialization</a></h1>
 <p>Booting a rich, virtual memory operating system poses challenges. While modern
 machines may offer gigabytes or even terabytes of <em>dynamic random access memory</em>
 <a href="https://en.wikipedia.org/wiki/Dynamic_random-access_memory">DRAM</a> and extremely
@@ -296,7 +302,7 @@ uninitialized state.</p>
 controllers as needed to load and boot an operating system. Due to the high
 diversity of hardware, every SoC, SoM and mainboard comes with specific
 necessities.</p>
-<h3 id="boot-flows"><a class="header" href="#boot-flows">Boot Flows</a></h3>
+<h2 id="boot-flows"><a class="header" href="#boot-flows">Boot Flows</a></h2>
 <p>Since memory and storage parts can be complex, additional firmware and loaders
 are implemented in software. They would initialize the platform step by step,
 phase by phase, or stage by stage; projects differ in naming.</p>
@@ -311,8 +317,8 @@ phase by phase, or stage by stage; projects differ in naming.</p>
 </tbody></table>
 </div>
 <p><strong>Note</strong>:
-<a href="https://github.com/oreboot/oreboot/tree/main/Documentation/boot-flow.md">oreboot
-</a> and
+<a href="https://github.com/oreboot/oreboot/tree/main/Documentation/boot-flow.md">oreboot</a>
+and
 <a href="https://doc.coreboot.org/getting_started/architecture.html">coreboot</a> do not
 implement boot loaders to access external storage themselves. Instead, they
 provide options for payloads that could load a final OS or stand for themselves;
@@ -335,8 +341,8 @@ customized by anyone but those who hold the signing keys, i.e., the vendor,
 unless ways to circumvent the verification are found. This is also true for many
 OEM products in general, where custom firmware is not part of the product
 design. I.e., it is <a href="platform-security.html">protected against modification</a>.</p>
-<h3 id="references"><a class="header" href="#references">References</a></h3>
-<h4 id="arm-platforms"><a class="header" href="#arm-platforms">Arm platforms</a></h4>
+<h2 id="references"><a class="header" href="#references">References</a></h2>
+<h3 id="arm-platforms"><a class="header" href="#arm-platforms">Arm platforms</a></h3>
 <ul>
 <li><a href="https://youtu.be/GXFw8SV-51g">How Arm systems are booted</a></li>
 <li><a href="https://youtu.be/u0-swEMDFp0">U-Boot / Amlogic</a></li>
@@ -347,9 +353,9 @@ design. I.e., it is <a href="platform-security.html">protected against modificat
 </ul>
 </li>
 </ul>
-<h4 id="risc-v-platforms"><a class="header" href="#risc-v-platforms">RISC-V platforms</a></h4>
-<p><strong>TODO</strong></p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="boot-environments"><a class="header" href="#boot-environments">Boot Environments</a></h2>
+<h3 id="risc-v-platforms"><a class="header" href="#risc-v-platforms">RISC-V platforms</a></h3>
+<p>TODO</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="boot-environments"><a class="header" href="#boot-environments">Boot Environments</a></h1>
 <p>A <em>boot environment</em> is the hosting system of a <em>boot loader</em>.</p>
 <p>Boot processes may be interactive, or automatic, or static, set up in many ways.</p>
 <p>The following table classifies various approaches with example implementations.</p>
@@ -370,7 +376,7 @@ out of band, or at build time depending on the use case.</p>
 <li><a href="https://wiki.syslinux.org/wiki/index.php?title=SYSLINUX">syslinux/extlinux configuration files</a></li>
 <li><a href="https://ipxe.org/">PXE scripting/menu</a></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="platform-security"><a class="header" href="#platform-security">Platform Security</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="platform-security"><a class="header" href="#platform-security">Platform Security</a></h1>
 <p>In order to design a secure platform, each and every component in the boot
 process must be <em>measured</em> and/or <em>verified</em>. In addition, the platform in its
 entirety must be modeled so that only desired operations are permitted.</p>
