@@ -1,4 +1,4 @@
-## Platform Initialization
+# Platform Initialization
 
 Booting a rich, virtual memory operating system poses challenges. While modern
 machines may offer gigabytes or even terabytes of _dynamic random access memory_
@@ -12,7 +12,7 @@ controllers as needed to load and boot an operating system. Due to the high
 diversity of hardware, every SoC, SoM and mainboard comes with specific
 necessities.
 
-### Boot Flows
+## Boot Flows
 
 Since memory and storage parts can be complex, additional firmware and loaders
 are implemented in software. They would initialize the platform step by step,
@@ -29,8 +29,8 @@ phase by phase, or stage by stage; projects differ in naming.
 | oreboot           | mask ROM |    boot block    |  bt0  |        main        |      LinuxBoot      |     OS     |
 
 **Note**:
-[oreboot
-](https://github.com/oreboot/oreboot/tree/main/Documentation/boot-flow.md) and
+[oreboot](https://github.com/oreboot/oreboot/tree/main/Documentation/boot-flow.md)
+and
 [coreboot](https://doc.coreboot.org/getting_started/architecture.html) do not
 implement boot loaders to access external storage themselves. Instead, they
 provide options for payloads that could load a final OS or stand for themselves;
@@ -56,16 +56,16 @@ unless ways to circumvent the verification are found. This is also true for many
 OEM products in general, where custom firmware is not part of the product
 design. I.e., it is [protected against modification](platform-security.md).
 
-### References
+## References
 
-#### Arm platforms
+### Arm platforms
 
 - [How Arm systems are booted](https://youtu.be/GXFw8SV-51g)
 - [U-Boot / Amlogic](https://youtu.be/u0-swEMDFp0)
 - Arm secure boot chain on Ampere Altra
-  * [Armed to boot talk](https://youtu.be/i2IG6Au34xM)
-  * [Armed to boot blog post](https://blog.cloudflare.com/armed-to-boot/)
+  - [Armed to boot talk](https://youtu.be/i2IG6Au34xM)
+  - [Armed to boot blog post](https://blog.cloudflare.com/armed-to-boot/)
 
-#### RISC-V platforms
+### RISC-V platforms
 
-**TODO**
+TODO

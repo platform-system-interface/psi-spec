@@ -1,4 +1,4 @@
-## Peripherals
+# Peripherals
 
 Systems connect with external hardware components, also known as _peripherals_,
 using buses and controllers. A controller is a unit driving a bus, such as the

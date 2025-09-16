@@ -1,4 +1,4 @@
-## Platform Security
+# Platform Security
 
 In order to design a secure platform, each and every component in the boot
 process must be _measured_ and/or _verified_. In addition, the platform in its

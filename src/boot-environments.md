@@ -1,4 +1,4 @@
-## Boot Environments
+# Boot Environments
 
 A _boot environment_ is the hosting system of a _boot loader_.
 

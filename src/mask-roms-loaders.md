@@ -1,4 +1,4 @@
-## Mask ROMs and Loaders
+# Mask ROMs and Loaders
 
 Many SoCs have initial pieces of code baked into them to bootstrap the system.
 Some may call them boot ROMs, otherwise known as mask ROMs or Zero Stage Boot
@@ -16,7 +16,7 @@ of such a mechanism, they also have their own software utilities that understand
 the respective protocol. With that software, one may read out chip information,
 perform MMIO access, transfer data into memory and execute it, set fuses, etc.
 
-### Generic protocols, variants and tools
+## Generic protocols, variants and tools
 
 - [USB Device Firmware Upgrade (DFU)](https://www.usb.org/document-library/device-firmware-upgrade-11-new-version-31-aug-2004)
   - [STM32](https://www.st.com/resource/en/application_note/an3156-usb-dfu-protocol-used-in-the-stm32-bootloader-stmicroelectronics.pdf)
@@ -26,7 +26,7 @@ perform MMIO access, transfer data into memory and execute it, set fuses, etc.
   - [U-Boot documentation on fastboot](https://docs.u-boot.org/en/latest/android/fastboot-protocol.html)
   - [fastboot host-side implementation in Rust](https://github.com/platform-system-interface/fastboot)
 
-### Vendor specific protocols and tools
+## Vendor specific protocols and tools
 
 - Allwinner: FEL mode, usable with
   - [`sunxi-fel`](https://github.com/linux-sunxi/sunxi-tools)

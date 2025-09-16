@@ -1,4 +1,4 @@
-## Application Processors
+# Application Processors
 
 An _Application Processor_ (AP) is the main processing unit of a system,
 commonly designed as a _System on Chip_ (SoC). APs are sometimes also considered
@@ -8,7 +8,7 @@ over the years, psi-spec is concerned with the kind of processors that feature a
 _Memory Management Unit_ (MMU) and DRAM, allowing for many concurrent tasks and
 processing large amounts of data.
 
-### System on Chip
+## System on Chip
 
 An SoC integrates processing units with IO [peripherals](peripherals.md) via
 internal system buses and networks, all packaged into one chip.
