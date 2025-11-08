@@ -2,10 +2,10 @@
 
 Booting a rich, virtual memory operating system poses challenges. While modern
 machines may offer gigabytes or even terabytes of _dynamic random access memory_
-[DRAM](https://en.wikipedia.org/wiki/Dynamic_random-access_memory) and extremely
-high speed peripheral buses in the range of gigahertz frequencies, they still
-start small with low amounts of static RAM and peripheral controllers in an
-uninitialized state.
+([DRAM](https://en.wikipedia.org/wiki/Dynamic_random-access_memory)) and
+extremely high speed peripheral buses in the range of gigahertz frequencies,
+they still start small with low amounts of static RAM and peripheral controllers
+in an uninitialized state.
 
 Early platform firmware takes the responsibility to bring up DRAM and other
 controllers as needed to load and boot an operating system. Due to the high
@@ -20,13 +20,14 @@ phase by phase, or stage by stage; projects differ in naming.
 
 | Project/Vendor    | mask ROM | ................ | ..... | .................. | ................... | .......... |
 | ----------------- | -------- | ---------------- | ----- | ------------------ | ------------------- | ---------- |
-| U-Boot            |   (N/A)  |       TPL        |  SPL  | platform-dependent |     U-Boot proper   | OS         |
+| U-Boot            |   (N/A)  |       TPL        |  SPL  | platform-dependent |     U-Boot proper   |     OS     |
 | EDK2              |   (N/A)  |       SEC        |  PEI  |        DXE         |         BDS         | payload/OS |
-| Oxide             |   (N/A)  |       phbl       |   X   |        (-)         |         (-)         |     OS     |
 | coreboot          |   (N/A)  | boot block / CAR |  ROM  |     RAM stage      |       payload       |     OS     |
-| sunxi (Allwinner) |    FEL   |       (-)        | boot0 | maybe intermediate | maybe U-Boot proper |     OS     |
+| oreboot           | mask ROM |   (boot block)   |  bt0  |        main        |      LinuxBoot      |     OS     |
+| Oxide             |   (N/A)  |       phbl       |   X   |        (-)         |         (-)         |     OS     |
 | RISC-V            |   ZSBL   |       (-)        |  FSBL |        SBI         |     boot loader     |     OS     |
-| oreboot           | mask ROM |    boot block    |  bt0  |        main        |      LinuxBoot      |     OS     |
+| sunxi (Allwinner) |    FEL   |       (-)        | boot0 | maybe intermediate | maybe U-Boot proper |     OS     |
+| Qualcomm          |    EDL   |       PBL        |  SBL  |       ABOOT        |                     |     OS     |
 
 **Note**:
 [oreboot](https://github.com/oreboot/oreboot/tree/main/Documentation/boot-flow.md)
