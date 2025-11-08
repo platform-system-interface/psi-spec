@@ -1,10 +1,11 @@
 # Mask ROMs and Loaders
 
 Many SoCs have initial pieces of code baked into them to bootstrap the system.
-Some may call them boot ROMs, otherwise known as mask ROMs or Zero Stage Boot
-Loaders (ZSBL). They define a low-level access channel for development and would
-typically remain mostly the same over time for the same vendor, because change
-would mean cost.
+Some may call them boot ROMs, an ambiguous term, so they are otherwise known as
+[mask ROM](https://patents.google.com/patent/US20050254280A1/en)s or Zero Stage
+Boot Loaders (ZSBL). They define a low-level access channel for development and
+would typically remain mostly the same over time for the same vendor, because
+change would mean cost.
 This initial code is designed to load the changeable application code from
 rewritable storages, such as SPI flash parts, SD cards, or eMMC, or possibly an
 internal reprogrammable memory part. Those stages are also referred to as
@@ -41,6 +42,8 @@ perform MMIO access, transfer data into memory and execute it, set fuses, etc.
   - [`bl_boot`](https://github.com/platform-system-interface/bl_boot)
 - Canaan Kendryte
   - [`kendryte_boot`](https://github.com/platform-system-interface/kendryte_boot)
+- Qualcomm
+  - [`qc_boot`](https://github.com/platform-system-interface/qc_boot)
 - Rockchip: **TODO**
   - [`rkflashtool`](https://github.com/linux-rockchip/rkflashtool)
   - [`xrock`](https://github.com/xboot/xrock)
