@@ -47,6 +47,10 @@ uncertainty or compromises without even knowing.
 
 ## References
 
+[hardwear.io Netherlands 2019 - Trammell Hudson - Roots of Trust and Attestation]
+<https://media.hardwear.io/roots-of-trust-and-attestation/>
+- [alt: YouTube](https://www.youtube.com/watch?v=lt8YKm9CQ34)
+
 <https://trustedcomputinggroup.org/resource/d-rtm-architecture-specification/>
 
 <https://trustedcomputinggroup.org/wp-content/uploads/DRTM-Specification-Overview_June2013.pdf>
