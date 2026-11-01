@@ -2,14 +2,14 @@
 
 ![PSI logo](images/logo.svg)
 
-The Platform System Interface Specification, or _psi-spec_, is
+The Platform System Interface Specification, or _PSI spec_, is
 a collection of documents for [hardware and software co-design](
 hw-sw-codesign.md) from a general perspective.
 It describes how [microprocessors](application-processors.md) provide an
 [environment for booting](boot-environments.md) operating systems or otherwise
 bare-metal applications, typically starting from intermediate, rewritable code
 that initializes clocks, DRAM and peripherals, commonly referred to as boot
-firmware or [platform initialization firmware](platform-initialization.md).
+firmware or [platform initialization](platform-initialization.md) firmware.
 
-In the following sections, _psi-spec_ describes principles and
+In the following sections, _PSI spec_ describes principles and
 abstractions that apply agnostic of vendors and products.
