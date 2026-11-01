@@ -35,7 +35,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-edc5e6c5.js";
+            window.path_to_searchindex_js = "searchindex-ada1a2ee.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-c5f448a7.js"></script>
@@ -180,10 +180,10 @@
                         <h1 id="platform-initialization"><a class="header" href="#platform-initialization">Platform Initialization</a></h1>
 <p>Booting a rich, virtual memory operating system poses challenges. While modern
 machines may offer gigabytes or even terabytes of <em>dynamic random access memory</em>
-<a href="https://en.wikipedia.org/wiki/Dynamic_random-access_memory">DRAM</a> and extremely
-high speed peripheral buses in the range of gigahertz frequencies, they still
-start small with low amounts of static RAM and peripheral controllers in an
-uninitialized state.</p>
+(<a href="https://en.wikipedia.org/wiki/Dynamic_random-access_memory">DRAM</a>) and
+extremely high speed peripheral buses in the range of gigahertz frequencies,
+they still start small with low amounts of static RAM and peripheral controllers
+in an uninitialized state.</p>
 <p>Early platform firmware takes the responsibility to bring up DRAM and other
 controllers as needed to load and boot an operating system. Due to the high
 diversity of hardware, every SoC, SoM and mainboard comes with specific
@@ -200,11 +200,12 @@ phase by phase, or stage by stage; projects differ in naming.</p>
 <tbody>
 <tr><td>U-Boot</td><td>(N/A)</td><td>TPL</td><td>SPL</td><td>platform-dependent</td><td>U-Boot proper</td><td>OS</td></tr>
 <tr><td>EDK2</td><td>(N/A)</td><td>SEC</td><td>PEI</td><td>DXE</td><td>BDS</td><td>payload/OS</td></tr>
-<tr><td>Oxide</td><td>(N/A)</td><td>phbl</td><td>X</td><td>(-)</td><td>(-)</td><td>OS</td></tr>
 <tr><td>coreboot</td><td>(N/A)</td><td>boot block / CAR</td><td>ROM</td><td>RAM stage</td><td>payload</td><td>OS</td></tr>
-<tr><td>sunxi (Allwinner)</td><td>FEL</td><td>(-)</td><td>boot0</td><td>maybe intermediate</td><td>maybe U-Boot proper</td><td>OS</td></tr>
+<tr><td>oreboot</td><td>mask ROM</td><td>(boot block)</td><td>bt0</td><td>main</td><td>LinuxBoot</td><td>OS</td></tr>
+<tr><td>Oxide</td><td>(N/A)</td><td>phbl</td><td>X</td><td>(-)</td><td>(-)</td><td>OS</td></tr>
 <tr><td>RISC-V</td><td>ZSBL</td><td>(-)</td><td>FSBL</td><td>SBI</td><td>boot loader</td><td>OS</td></tr>
-<tr><td>oreboot</td><td>mask ROM</td><td>boot block</td><td>bt0</td><td>main</td><td>LinuxBoot</td><td>OS</td></tr>
+<tr><td>sunxi (Allwinner)</td><td>FEL</td><td>(-)</td><td>boot0</td><td>maybe intermediate</td><td>maybe U-Boot proper</td><td>OS</td></tr>
+<tr><td>Qualcomm</td><td>EDL</td><td>PBL</td><td>SBL</td><td>ABOOT</td><td></td><td>OS</td></tr>
 </tbody>
 </table>
 </div>
