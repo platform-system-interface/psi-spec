@@ -183,6 +183,11 @@ and software.</p>
 <p>In PSI spec, however, we look at a different dimension:
 How are hardware and software combined as <em>platforms and systems</em>?</p>
 <h2 id="platforms-and-systems"><a class="header" href="#platforms-and-systems">Platforms and Systems</a></h2>
+<p>There are multiple kinds of patforms and systems. In PSI spec, we are concerned
+with <em>hardware and software platforms</em> that are based on application processors
+with peripherals and designed as a <a href="application-processors.html">System on Chip</a>.
+We look at aspects of such platforms and how they provide interfaces for
+versatile operating systems.</p>
 <blockquote>
 <p>[!NOTE]
 The two terms are closely related, often viewed as the same thing, and very
@@ -191,11 +196,12 @@ abstract. In the following, a platform is more specific.</p>
 <p>A <strong>system</strong> is a set of rules and multiple components that work together<sup class="footnote-reference"><a href="#2">2</a></sup>.</p>
 <p>A compute <strong>platform</strong> is a system with a specific set of interfaces<sup class="footnote-reference"><a href="#3">3</a></sup>.</p>
 <h3 id="hardware"><a class="header" href="#hardware">Hardware</a></h3>
-<p>A <strong>hardware system</strong> comprises processing units, memories and peripherals
-connected via buses and/or networks.</p>
+<p>A <strong>hardware system</strong> comprises <a href="application-processors.html">processing units</a>,
+memories and <a href="peripherals.html">peripherals</a> connected via buses and/or networks.</p>
 <p>A <strong>hardware platform</strong> is a specific implementation of instruction sets and
 interfaces, such as processing unit control registers, shared memory, peripheral
-register blocks and mailboxes, e.g. the Allwinner D1<sup class="footnote-reference"><a href="#4">4</a></sup>.</p>
+register blocks and mailboxes, e.g. the Allwinner D1<sup class="footnote-reference"><a href="#4">4</a></sup>. In a broader sense,
+this may include a board or an entire product.</p>
 <h3 id="software"><a class="header" href="#software">Software</a></h3>
 <p>A <strong>software system</strong> is a kernel or firmware runtime with its drivers and
 libraries communicating via APIs.</p>
