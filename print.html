@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-ada1a2ee.js";
+            window.path_to_searchindex_js = "searchindex-d33fe109.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-c5f448a7.js"></script>
+        <script src="toc-de916812.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -190,47 +190,13 @@ firmware or <a href="#platform-initialization">platform initialization</a> firmw
 <p>In the following sections, <em>PSI spec</em> describes principles and
 abstractions that apply agnostic of vendors and products.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="application-processors"><a class="header" href="#application-processors">Application Processors</a></h1>
-<p>An <em>Application Processor</em> (AP) is the main processing unit of a system,
-commonly designed as a <em>System on Chip</em> (SoC). APs are sometimes also considered
-microprocessors, as opposed to microcontrollers. Another regularly used term is
-<em>Central Processing Unit</em> (CPU). While design approaches and names have changed
-over the years, psi-spec is concerned with the kind of processors that feature a
-<em>Memory Management Unit</em> (MMU) and DRAM, allowing for many concurrent tasks and
-processing large amounts of data.</p>
-<p>Note that the general terms are</p>
-<ul>
-<li><em>Processing Element</em> (PE), the smallest part in a system aka <em>hardware thread</em></li>
-<li><em>Processing Unit</em> (PU), possibly consisting of multiple PEs</li>
-<li><em>Processing Cluster</em>, a set of interconnected PUs sharing caches</li>
-</ul>
-<h2 id="system-on-chip"><a class="header" href="#system-on-chip">System on Chip</a></h2>
-<p>An SoC integrates processing units with IO <a href="#peripherals">peripherals</a> via
-internal system buses and networks, all packaged into one chip.</p>
-<p>Common buses are defined by the
-<a href="https://developer.arm.com/Architectures/AMBA">AMBA</a> standards, the
-<a href="https://opencores.org/howto/wishbone">WISHBONE Interconnect Architecture</a>, and
-<a href="https://en.wikipedia.org/wiki/CoreConnect">CoreConnect</a>.
-Some vendors have their own designs, such as AMD’s <a href="https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/other/56978.pdf">Infinity Fabric</a>.
-A bus is generally a set of physical interfaces and corresponding protocols.</p>
-<p>A <a href="https://en.wikipedia.org/wiki/Network_on_a_chip">Network on a Chip (NoC)</a>
-improves the scalability of SoC components and its power efficiency over shared
-buses.</p>
-<p>Parts of an SoC are called blocks.</p>
-<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="images/simple-soc.png" alt="logical view of a simple SoC"><span class="img-wrapper"><img src="images/simple-soc.png" alt="logical view of a simple SoC"></span></label></p>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="peripherals"><a class="header" href="#peripherals">Peripherals</a></h1>
-<p>Systems connect with external hardware components, also known as <em>peripherals</em>,
-using buses and controllers. A controller is a unit driving a bus, such as the
-high-speed USB and PCIe buses or the slower SPI and I2C. Hardware platforms may
-integrate controllers directly or chain them through adapters and expansions.</p>
-<div style="break-before: page; page-break-before: always;"></div>
 <h1 id="hardwaresoftware-co-design"><a class="header" href="#hardwaresoftware-co-design">Hardware/Software Co-Design</a></h1>
 <p>Integrated circuits, simulation, drivers, applications and compilers specific to
 a purpose are often described as the main aspects of co-designing<sup class="footnote-reference" id="fr-1-1"><a href="#footnote-1">1</a></sup> hardware
 and software.</p>
 <p>In PSI spec, however, we look at a different dimension:
-How are hardware and software combined as <em>platforms and systems</em>?</p>
+How are <a href="#from-hardware-to-software">hardware and software combined</a> as <em>platforms and
+systems</em>?</p>
 <h2 id="platforms-and-systems"><a class="header" href="#platforms-and-systems">Platforms and Systems</a></h2>
 <p>There are multiple kinds of patforms and systems. In PSI spec, we are concerned
 with <em>hardware and software platforms</em> that are based on application processors
@@ -275,6 +241,63 @@ FreeBSD on RISC-V<sup class="footnote-reference" id="fr-5-1"><a href="#footnote-
 <p><a href="https://wiki.freebsd.org/riscv">https://wiki.freebsd.org/riscv</a> <a href="#fr-5-1">↩</a></p>
 </li>
 </ol>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="application-processors"><a class="header" href="#application-processors">Application Processors</a></h1>
+<p>An <em>Application Processor</em> (AP) is the main processing unit of a system,
+commonly designed as a <em>System on Chip</em> (SoC). APs are sometimes also considered
+microprocessors, as opposed to microcontrollers. Another regularly used term is
+<em>Central Processing Unit</em> (CPU). While design approaches and names have changed
+over the years, psi-spec is concerned with the kind of processors that feature a
+<em>Memory Management Unit</em> (MMU) and DRAM, allowing for many concurrent tasks and
+processing large amounts of data.</p>
+<p>Note that the general terms are</p>
+<ul>
+<li><em>Processing Element</em> (PE), the smallest part in a system aka <em>hardware thread</em></li>
+<li><em>Processing Unit</em> (PU), possibly consisting of multiple PEs</li>
+<li><em>Processing Cluster</em>, a set of interconnected PUs sharing caches</li>
+</ul>
+<h2 id="system-on-chip"><a class="header" href="#system-on-chip">System on Chip</a></h2>
+<p>An SoC integrates processing units with IO <a href="#peripherals">peripherals</a> via
+internal system buses and networks, all packaged into one chip.</p>
+<p>Common buses are defined by the
+<a href="https://developer.arm.com/Architectures/AMBA">AMBA</a> standards, the
+<a href="https://opencores.org/howto/wishbone">WISHBONE Interconnect Architecture</a>, and
+<a href="https://en.wikipedia.org/wiki/CoreConnect">CoreConnect</a>.
+Some vendors have their own designs, such as AMD’s <a href="https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/other/56978.pdf">Infinity Fabric</a>.
+A bus is generally a set of physical interfaces and corresponding protocols.</p>
+<p>A <a href="https://en.wikipedia.org/wiki/Network_on_a_chip">Network on a Chip (NoC)</a>
+improves the scalability of SoC components and its power efficiency over shared
+buses.</p>
+<p>Parts of an SoC are called blocks.</p>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="images/simple-soc.png" alt="logical view of a simple SoC"><span class="img-wrapper"><img src="images/simple-soc.png" alt="logical view of a simple SoC"></span></label></p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="peripherals"><a class="header" href="#peripherals">Peripherals</a></h1>
+<p>Systems connect with external hardware components, also known as <em>peripherals</em>,
+using buses and controllers. A controller is a unit driving a bus, such as the
+high-speed USB and PCIe buses or the slower SPI and I2C. Hardware platforms may
+integrate controllers directly or chain them through adapters and expansions.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="from-hardware-to-software"><a class="header" href="#from-hardware-to-software">From Hardware to Software</a></h1>
+<p>A piece of hardware on its own is nothing without code. Typical SoCs run their
+first code from a <a href="#mask-roms-and-loaders">mask ROM</a>, which in turn loads
+additional code from other kinds of memory, <a href="#platform-initialization">initializing the platform</a> to offer a <a href="#boot-environments">boot environment</a>.</p>
+<h2 id="hardware-fixups"><a class="header" href="#hardware-fixups">Hardware fixups</a></h2>
+<p>When designing a hardware platform, the available features are fixed at tapeout.
+To allow for fixing issues later on, multiple concepts have evolved:</p>
+<ul>
+<li>chicken bits allow for opting out of features</li>
+<li>microcode adds a translation layer before instruction decoding</li>
+</ul>
+<p>These can be instrumented by any component of the boot chain.</p>
+<h2 id="software-configuration"><a class="header" href="#software-configuration">Software configuration</a></h2>
+<p>While buses such as PCI and USB allow for flexible extension, built-in
+controllers themselves are defined at the time of <a href="#hardwaresoftware-co-design">hardware platform design</a>. On top of that, the software running on the platform
+determines what features are eventually usable via two means, driver enablement
+and runtime configuration.</p>
+<p>For example, the Linux kernel, configured via Kconfig, offers many drivers and
+parameters for them. Which of them are used and how is chosen through parameters
+via ACPI or DeviceTree, possbily both, or hardcoded. Any component in a boot
+chain could take care of (re)initializing any feature of the platform.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="mask-roms-and-loaders"><a class="header" href="#mask-roms-and-loaders">Mask ROMs and Loaders</a></h1>
 <p>Many SoCs have initial pieces of code baked into them to bootstrap the system.
