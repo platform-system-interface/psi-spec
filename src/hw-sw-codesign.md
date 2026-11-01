@@ -5,7 +5,8 @@ a purpose are often described as the main aspects of co-designing[^1] hardware
 and software.
 
 In PSI spec, however, we look at a different dimension:
-How are hardware and software combined as _platforms and systems_?
+How are [hardware and software combined](bootstrapping.md) as _platforms and
+systems_?
 
 ## Platforms and Systems
 
