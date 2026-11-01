@@ -8,6 +8,11 @@ over the years, psi-spec is concerned with the kind of processors that feature a
 _Memory Management Unit_ (MMU) and DRAM, allowing for many concurrent tasks and
 processing large amounts of data.
 
+Note that the general terms are
+- _Processing Element_ (PE), the smallest part in a system aka _hardware thread_
+- _Processing Unit_ (PU), possibly consisting of multiple PEs
+- _Processing Cluster_, a set of interconnected PUs sharing caches
+
 ## System on Chip
 
 An SoC integrates processing units with IO [peripherals](peripherals.md) via
